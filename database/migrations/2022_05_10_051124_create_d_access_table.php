@@ -14,7 +14,8 @@ class CreateDAccessTable extends Migration
     public function up()
     {
         Schema::create('d_access', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_access');
+            $table->string('role');
             $table->timestamps();
         });
     }

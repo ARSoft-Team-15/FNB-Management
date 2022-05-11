@@ -14,7 +14,9 @@ class CreateDPersonelTable extends Migration
     public function up()
     {
         Schema::create('d_personel', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_personel');
+            $table->string('name_personel');
+            $table->string('address_personel');
             $table->timestamps();
         });
     }

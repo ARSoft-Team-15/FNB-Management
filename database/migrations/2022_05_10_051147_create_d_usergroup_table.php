@@ -14,7 +14,15 @@ class CreateDUsergroupTable extends Migration
     public function up()
     {
         Schema::create('d_usergroup', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_usergroup');
+            $table->string('name_usergroup');
+
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_group');
+
+            $table->foreign('id_user')->references('id_user')->on('d_user')->onDelete('cascade');
+            $table->foreign('id_group')->references('id_group')->on('d_group')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class d_groupaccess extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

@@ -14,7 +14,15 @@ class CreateDUseraccessTable extends Migration
     public function up()
     {
         Schema::create('d_useraccess', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_useraccess');
+            $table->string('access_token');
+
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_access');
+
+            $table->foreign('id_user')->references('id_user')->on('d_user')->onDelete('cascade');
+            $table->foreign('id_access')->references('id_access')->on('d_access')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

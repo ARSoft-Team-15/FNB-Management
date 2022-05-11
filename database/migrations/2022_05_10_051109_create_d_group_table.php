@@ -14,7 +14,8 @@ class CreateDGroupTable extends Migration
     public function up()
     {
         Schema::create('d_group', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_group');
+            $table->string('name_group');
             $table->timestamps();
         });
     }

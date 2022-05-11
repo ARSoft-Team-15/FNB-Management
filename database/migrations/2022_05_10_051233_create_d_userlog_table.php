@@ -14,7 +14,13 @@ class CreateDUserlogTable extends Migration
     public function up()
     {
         Schema::create('d_userlog', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_userlog');
+
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id_user')->on('d_user')->onDelete('cascade');
+
+            $table->dateTime('login_at');
+            $table->dateTime('logout_at');
             $table->timestamps();
         });
     }

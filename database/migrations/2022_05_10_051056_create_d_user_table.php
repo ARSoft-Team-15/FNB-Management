@@ -14,7 +14,14 @@ class CreateDUserTable extends Migration
     public function up()
     {
         Schema::create('d_user', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_user');
+            $table->string('user_name');
+            $table->string('email_user');
+            $table->string('password_user');
+
+            $table->unsignedBigInteger('personel_id');
+            $table->foreign('personel_id')->references('id_personel')->on('d_personel')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
