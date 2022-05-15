@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use app\Models\Access;
+use Illuminate\Support\Facades\DB;
 
 class AccessSeeder extends Seeder
 {
@@ -14,13 +14,14 @@ class AccessSeeder extends Seeder
      */
     public function run()
     {
-        Access::create([
-            'id' => 1,
-            'role' => 'user'
-        ]);
-        Access::create([
-            'id' => 2,
-            'role' => 'admin'
+        DB::table('accesses')->insert([
+            [
+                'id' => 1,
+                'role' => 'user'
+            ],[
+                'id' => 2,
+                'role' => 'admin'
+            ]
         ]);
     }
 }

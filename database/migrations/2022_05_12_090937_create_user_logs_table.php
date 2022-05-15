@@ -18,8 +18,8 @@ class CreateUserLogsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->dateTime('login_at');
-            $table->dateTime('logout_at');
+            $table->dateTime('login_at')->nullable();
+            $table->dateTime('logout_at')->nullable();
             $table->timestamps();
         });
     }
