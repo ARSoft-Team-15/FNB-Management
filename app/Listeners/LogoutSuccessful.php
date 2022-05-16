@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -10,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\UserLog;
 use Carbon\Carbon;
 
-class LoginSuccessful
+class LogoutSuccessful
 {
     /**
      * Create the event listener.
@@ -19,21 +18,20 @@ class LoginSuccessful
      */
     public function __construct()
     {
-
+        //
     }
 
     /**
      * Handle the event.
      *
-     * @param  \Login  $event
+     * @param  Logout  $event
      * @return void
      */
-    public function handle(Login $event)
+    public function handle(Logout $event)
     {
         $id = Auth::id();
-        $log = UserLog::create([
-            'user_id' => $id,
-            'login_at' => Carbon::now(),
+        UserLog::findOrfail($id, 'user_id')->latest()->first()->update([
+            'logout_at' => Carbon::now(),
         ]);
     }
 }

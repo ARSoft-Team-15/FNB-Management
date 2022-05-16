@@ -38,10 +38,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $id = Auth::id();
-        UserLog::create([
-            'user_id' => $id,
-            'login_at' => Carbon::now(),
-        ]);
     }
 }
