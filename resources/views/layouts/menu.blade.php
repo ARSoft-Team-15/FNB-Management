@@ -21,6 +21,7 @@
     <!-- icons -->
 
     <link href="{!! asset('css/icons.min.css') !!}" rel="stylesheet" type="text/css" />
+    @livewireStyles
 
 </head>
 
@@ -219,7 +220,7 @@
 
     <!-- App js -->
     <script src="{!! asset('js/app.min.js') !!}"></script>
-
+    @livewireScripts
 
 </body>
 

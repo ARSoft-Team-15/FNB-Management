@@ -27,3 +27,11 @@ Route::get('/getalluserlog', [App\Http\Controllers\UserController::class, 'getAl
 Route::get('/changepassword', [App\Http\Controllers\UserController::class, 'getChangePassword']);
 Route::post('/ubahpassword', [App\Http\Controllers\UserController::class, 'postChangePassword']);
 
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('UserManagement');
+Route::get('/group', [App\Http\Controllers\GroupController::class, 'index'])->name('Group');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::view('/managepersonel', 'user_management.manage_data_personel');
+// Route::get('/changepassword', [App\Http\Controllers\UserController::class, 'index']);
+// Route::post('/ubahpassword', [App\Http\Controllers\UserController::class, 'changepassword']);
+

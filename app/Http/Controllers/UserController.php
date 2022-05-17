@@ -11,9 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function index(Type $var = null){
+        return view('user_management.index');
     }
 
     public function getChangePassword()
@@ -30,7 +33,7 @@ class UserController extends Controller
         $oldpass = $request->oldpassword;
         $newpass = $request->newpassword;
         $confirmnewpass = $request->confirmnewpassword;
-        
+
         if($oldpass == $newpass){
             return redirect('/admin/login')->with('error', 'Password lama sama dengan password baru');
         }
@@ -56,7 +59,7 @@ class UserController extends Controller
     {
         $user = User::all();
         $data['user'] = $user;
-        
+
         return view('user_management.manage_data_personel', $data);
     }
 
