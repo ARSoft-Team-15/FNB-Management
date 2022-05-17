@@ -22,7 +22,8 @@ Route::view('/managepersonel', 'user_management.manage_data_personel');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::view('/managepersonel', 'user_management.manage_data_personel');
-Route::get('/changepassword', [App\Http\Controllers\UserController::class, 'index']);
-Route::post('/ubahpassword', [App\Http\Controllers\UserController::class, 'changepassword']);
+Route::get('/getalluser', [App\Http\Controllers\UserController::class, 'getAllUser']);
+Route::get('/getalluserlog', [App\Http\Controllers\UserController::class, 'getAllUserLog']);
+Route::get('/changepassword', [App\Http\Controllers\UserController::class, 'getChangePassword']);
+Route::post('/ubahpassword', [App\Http\Controllers\UserController::class, 'postChangePassword']);
 

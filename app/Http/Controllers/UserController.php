@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserLog;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -13,12 +15,18 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index(Type $var = null)
+
+    public function getChangePassword()
     {
-        return view('user_management.change_password');
+        $id = Auth::id();
+        $user = User::where('id', $id)->first();
+        // return $user;
+        return view('user_management.change_password', $user);
     }
-    public function changepassword(Request $request)
+
+    public function postChangePassword(Request $request)
     {
+        $id = Auth::id();
         $oldpass = $request->oldpassword;
         $newpass = $request->newpassword;
         $confirmnewpass = $request->confirmnewpassword;
@@ -30,7 +38,7 @@ class UserController extends Controller
             return redirect('/admin/login')->with('error', 'Password Tidak sama');
         }
 
-        $user = User::where('email', 'user@example.com')->first();
+        $user = User::where('id', $id)->first();
         if(!$user){
             return redirect('/admin/login')->with('error', 'User Email Tidak Ada');
         }
@@ -42,5 +50,19 @@ class UserController extends Controller
             return redirect('home');
         }
         return view('user_management.change_password');
+    }
+
+    public function getAllUser()
+    {
+        $user = User::all();
+        $data['user'] = $user;
+        
+        return view('user_management.manage_data_personel', $data);
+    }
+
+    public function getAllUserLog()
+    {
+        $userlog = UserLog::all();
+        return $userlog;
     }
 }

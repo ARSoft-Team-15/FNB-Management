@@ -23,16 +23,20 @@
                                         <th>No</th>
                                         <th>Name</th>
                                         <th>E-Mail</th>
-                                        <th>Role</th>
+                                        <th>Group</th>
+                                        <th>Access</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($user as $u)
                                     <tr>
-                                        <th>1</th>
-                                        <th>User</th>
-                                        <th>User@example.com</th>
-                                        <th>User</th>
+                                        <th>{{$u['id']}}</th>
+                                        <th>{{$u['name']}}</th>
+                                        <th>{{$u['email']}}</th>
+                                        <th>{{$u['group_id']}}</th>
+                                        <th>{{$u['access_id']}}</th>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -55,19 +55,20 @@
                         <li class="menu-title">Management</li>
 
                         <li>
-                            <a href="#collapseExample" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <a href="#collapseExample" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle">
                                 <i class="bi bi-person-rolodex"></i>
                                 <span> Users </span>
                             </a>
                             <ul class="collapse" id="collapseExample">
                                 <li>
-                                    <a href="#">Manage Data Personel</a>
+                                    <a href="/getalluser">Manage Data Personel</a>
                                 </li>
                                 <li>
-                                    <a href="#">Change Password</a>
+                                    <a href="/changepassword">Change Password</a>
                                 </li>
                                 <li>
-                                    <a href="#">User Log</a>
+                                    <a href="/getalluserlog">User Log</a>
                                 </li>
                             </ul>
                         </li>
@@ -139,9 +140,12 @@
                         <ul class="list-unstyled topnav-menu float-right mb-0">
 
                             <li class="d-none d-sm-inline-block">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-box-arrow-right"></i> <span class="align-middle">Log Out</span>
-                                </a>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="bi bi-box-arrow-right"></i>{{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
 
                         </ul>

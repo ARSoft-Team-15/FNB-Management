@@ -6,6 +6,17 @@
             <div class="card">
                 <div class="card-header">Change Password</div>
                 <div class="card-body">
+                    <div class="row mb-3">
+                        <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
+                        <div class="col-md-6">
+                            <span id="name">: {{$name}}</span>
+                        </div>
+                        <label for="email" class="col-md-4 col-form-label text-md-end">E-Mail</label>
+                        <div class="col-md-6">
+                            <span id="email">: {{$email}}</span>
+                        </div>
+                        
+                    </div>
                     @if (session('error'))
                     <div class="alert alert-danger d-flex align-items-center" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
